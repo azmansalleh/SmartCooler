@@ -108,7 +108,7 @@ def faceIdentify():
 			pass
 
 	
-
+#Function which checks if the door is open or close
 def switchChecking():
 	while True:
 		if switch.read() == "1":
@@ -117,7 +117,7 @@ def switchChecking():
 			switch.closeDoor()
 			smartCooler.reset()
 
-		
+#Main method place which the script will find an rune all the codes.		
 if __name__ == '__main__':
 
 	thread1 = threading.Thread(target=camCapture)

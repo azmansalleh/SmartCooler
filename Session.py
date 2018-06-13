@@ -1,3 +1,5 @@
+#creates a session to use the face API from mircosoft 
+
 class Session():
 	def __init__(self):
 		self.reset()
