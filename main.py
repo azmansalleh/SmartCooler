@@ -24,7 +24,7 @@ temp = Frameimage()
 switch = Switch(serial)
 
 #Clear pre-exsiting image which might contain a face already
-#os.remove("frame.jpg")
+os.remove("frame.jpg")
 
 #Start camera session for realtime recording and PyGame
 smartCooler.startSession(CF)
