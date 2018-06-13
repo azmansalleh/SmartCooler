@@ -1,6 +1,8 @@
 from pydocumentdb import document_client
 import json
 
+# smartcooler(Database) -----> cognitivedocuments(Collections) -----> Query(Documents)
+
 class Query():
 	def __init__(self):
 		self.url = "https://lssmartcoolercosmosdb.documents.azure.com:443/"
@@ -20,6 +22,7 @@ class Query():
 		self.docLink = self.document['_self']
 
 	def create(self,gender,age,smile,emotion,hair):
+		#Add new documents/row into collection
 		self.client.CreateDocument((self.docLink),
 		    { 
 		        'Gender': gender,
@@ -27,8 +30,6 @@ class Query():
 		        'Smile': smile,
 		        'Emotions' : emotion,
 		        'Hair' : hair
-
-
 		    })
 
 	def read(self):
@@ -46,5 +47,5 @@ class Query():
 		self.fp.close()
 
 
-temp = Query()
-temp.read()
+# temp = Query()
+# temp.read()
