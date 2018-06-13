@@ -1,5 +1,8 @@
 class Frameimage():
     def __init__(self):
+        self.reset()
+        
+    def reset(self):
         self.faceID = 0
         self.gender = 0
         self.age = 0
@@ -10,7 +13,9 @@ class Frameimage():
         self.top = 0
         self.left = 0
         self.frameCounter = 0
-        self.identity = "Searching....."
+        self.nameCounter = 0
+        self.identity = "Unknown"
+        self.identitySound = "Unknown"
 
     def setAttributes(self,faceID,gender,age,smile):
         self.faceID = faceID
@@ -38,11 +43,27 @@ class Frameimage():
     def resetCounter(self):
         self.frameCounter = 0
 
+    def setNameCounter(self):
+        self.nameCounter += 1
+
+    def getNameCounter(self):
+        return self.nameCounter
+
+    def resetNameCounter(self):
+        self.nameCounter = 0
+
     def returnFraming(self):
         return (self.width,self.height,self.top,self.left)
 
     def setIdentification(self,identity):
         self.identity = identity
+        self.identitySound = identity
 
-    def clearIdentification(self):
-        self.identity = "Searching....."
+    def getIdentity(self):
+        return self.identitySound
+
+    def clearIdentityName(self):        
+        self.identitySound = "Unknown"
+
+    def clearIdentitySound(self):
+        self.identitySound = "Unknown"
