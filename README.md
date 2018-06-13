@@ -1,1 +1,0 @@
-# smartcoolerV2
