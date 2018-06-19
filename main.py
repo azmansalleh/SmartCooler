@@ -24,7 +24,7 @@ temp = Frameimage()
 switch = Switch(serial)
 
 #Clear pre-exsiting image which might contain a face already
-os.remove("frame.jpg")
+#os.remove("frame.jpg")
 
 #Start camera session for realtime recording and PyGame
 smartCooler.startSession(CF)
@@ -35,7 +35,7 @@ PG.mixer.init()
 cap = cv2.VideoCapture(0)
 
 #Function to control anything inside the camera window
-def camCapture():
+def camCapture():	
 	while True:
 		#Capture every single frame
 		ret,frame = cap.read()
@@ -54,7 +54,8 @@ def camCapture():
 #Function to perform video analytics within each frame
 def frameProcess():
 	while True:
-		print (temp.getIdentity())
+		temp.getName(temp.getIdentity())
+		#print (temp.getIdentity())
 		try:
 			#Define the detection parameters
 			result = CF.face.detect("frame.jpg",attributes = "age,gender,smile,emotion,hair")
@@ -77,13 +78,14 @@ def frameProcess():
 					emotion = face['faceAttributes']['emotion']
 					hair = face['faceAttributes']['hair']
 
-					#demograph.create(gender,age,smile,emotion,hair)
+					demograph.create(gender,age,smile,emotion,hair)
 
 					temp.setAttributes(faceID,gender,age,smile)
 
 					#Face rectangle framing
 					rect = face['faceRectangle']
 					temp.setFraming(rect)
+					temp.setIdentificationSound()
 		except:
 			pass
 
@@ -103,12 +105,13 @@ def faceIdentify():
 				if verifyPerson["isIdentical"] == True:
 					temp.setIdentification(person["name"])
 					if switch.checkDoor() == "Opened":
-						smartCooler.welcomeName(time,PG,temp.getIdentity())						
+						#print ("Opened:",temp.getIdentitySound())
+						smartCooler.welcomeName(time,PG,temp.getIdentitySound())						
 		except:
 			pass
 
 	
-#Function which checks if the door is open or close
+
 def switchChecking():
 	while True:
 		if switch.read() == "1":
@@ -117,7 +120,7 @@ def switchChecking():
 			switch.closeDoor()
 			smartCooler.reset()
 
-#Main method place which the script will find an rune all the codes.		
+		
 if __name__ == '__main__':
 
 	thread1 = threading.Thread(target=camCapture)
@@ -136,5 +139,6 @@ if __name__ == '__main__':
 	thread3.join()
 	thread4.join()
 
+	
 	cap.release()
 	cv2.destroyAllWindows()  # destroy all the opened window
