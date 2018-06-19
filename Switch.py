@@ -1,7 +1,3 @@
-#import serial
-
-#toggle swtich open or close
-
 class Switch():
 	def __init__(self,serial):
 		self.reset(serial)
@@ -25,7 +21,4 @@ class Switch():
 
 	def checkDoor(self):
 		return self.door
-		
 
-# #test.printme()
-# #print (test.testme())
