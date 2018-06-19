@@ -2,7 +2,7 @@ from pydocumentdb import document_client
 import json
 
 # smartcooler(Database) -----> cognitivedocuments(Collections) -----> Query(Documents)
-#cosmos database class for communicating with the cosmos db in azure
+
 class Query():
 	def __init__(self):
 		self.url = "https://lssmartcoolercosmosdb.documents.azure.com:443/"
@@ -21,8 +21,8 @@ class Query():
 		self.document = list(self.client.QueryCollections(self.dbLink, self.docQuery))[0]
 		self.docLink = self.document['_self']
 
-	#insert document into collections
 	def create(self,gender,age,smile,emotion,hair):
+		#Add new documents/row into collection
 		self.client.CreateDocument((self.docLink),
 		    { 
 		        'Gender': gender,
@@ -31,8 +31,9 @@ class Query():
 		        'Emotions' : emotion,
 		        'Hair' : hair
 		    })
-	#Read documment from collections annd covert into readable json format
+
 	def read(self):
+		#Convert COSMOS dict type into readable JSON
 		self.docs = self.client.ReadDocuments(self.docLink)
 		self.output = (list(self.docs))
 		self.jsonOutput = json.dumps(self.output)
@@ -46,5 +47,5 @@ class Query():
 		self.fp.close()
 
 
-# temp = Query()
-# temp.read()
+temp = Query()
+temp.read()
