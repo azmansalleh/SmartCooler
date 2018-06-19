@@ -1,5 +1,3 @@
-#creates a session to use the face API from mircosoft 
-
 class Session():
 	def __init__(self):
 		self.reset()
@@ -30,7 +28,7 @@ class Session():
 	def welcomeName(self,time,PG,name):
 		if self.nameCounter == 0:
 			self.nameSound = PG.mixer.Sound("audio/"+name+".wav")
-			self.restockSound = PG.mixer.Sound("audio/test.wav")
+			self.restockSound = PG.mixer.Sound("audio/restock.wav")
 			self.nameSound.play()
 			time.sleep(3.5)
 			self.restockSound.play()
