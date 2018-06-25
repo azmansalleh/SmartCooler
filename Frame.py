@@ -31,10 +31,10 @@ class Frameimage():
 
     def setDefaultFraming(self):
         if self.frameCounter >= 2:
-            self.width = 1000
-            self.height = 1000
-            self.top = 1000
-            self.left = 1000
+            self.width = 3000
+            self.height = 3000
+            self.top = 3000
+            self.left = 3000
             self.frameCounter = 0
 
     def getName(self,name):
@@ -68,3 +68,4 @@ class Frameimage():
 
     def clearIdentitySound(self):
         self.identitySound = "Unknown"
+
