@@ -47,5 +47,5 @@ class Query():
 		self.fp.close()
 
 
-temp = Query()
-temp.read()
+#temp = Query()
+#temp.read()
