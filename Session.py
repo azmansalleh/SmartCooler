@@ -13,6 +13,7 @@ class Session():
 		self.verification = False
 		self.switch = True
 		self.verificationTime = 0
+		self.voiceFlag = 0
 		
 	def startSession(self,CF):
 		CF.BaseUrl.set(self.url)
@@ -46,6 +47,17 @@ class Session():
 
 	def getCounter(self):
 		return self.nameCounter
+
+	def actVoiceFlag(self):
+		self.voiceFlag = 1
+
+	def removeVoiceFlag(self):
+		self.voiceFlag = 0
+
+	def retVoiceFlag(self):
+		return self.voiceFlag
+
+
 		
 
 
