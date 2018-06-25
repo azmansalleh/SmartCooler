@@ -3,14 +3,15 @@ class Switch():
 		self.reset(serial)
 		
 	def reset(self,serial):
-		self.port = "COM5"
+		self.port = "COM3"
 		self.rate = 9600
 		self.arduino = serial.Serial(self.port, self.rate, timeout=.1)	
 		self.door = "Closed"
 
 	def read(self):
 		while 1:
-			self.data = self.arduino.readline()[:-2].decode('utf-8')
+			#self.data = self.arduino.readline()[:-2].decode('utf-8')
+			self.data = self.arduino.readline()[:-2].decode('cp1252')
 			return self.data
 
 	def openDoor(self):
@@ -21,4 +22,3 @@ class Switch():
 
 	def checkDoor(self):
 		return self.door
-
